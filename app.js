@@ -25,7 +25,7 @@ app.use(methodOverride('_method'))
 
 
 app.get('/', (req, res) => {
-    res.send('Hello')
+    res.send('YelpCamp')
 })
 app.get('/campgrounds', async (req, res) => {
     const campgrounds = await Campground.find({})
@@ -56,8 +56,9 @@ app.delete('/campgrounds/:id', async (req, res) => {
     const { id } = req.params
     await Campground.findByIdAndDelete(id)
     res.redirect('/campgrounds')
-
 })
+
+
 app.listen(3000, () => {
     console.log('Server Started!!')
 })
