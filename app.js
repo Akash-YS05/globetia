@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
 const ExpressError = require('./utils/ExpressError');
 const session = require("express-session");
+const flash = require("connect-flash")
 
 const reviews = require('./routes/reviews')
 const campgrounds = require('./routes/campgrounds');
@@ -28,9 +29,7 @@ app.engine('ejs', ejsMate)
 
 app.use(express.urlencoded({extended: true}))
 app.use(methodOverride('_method'))
-app.use('/campgrounds', campgrounds)
-app.use('/campgrounds/:id/reviews', reviews)
-app.use(express.static(path.join(__dirname, 'public')))
+
 
 const sessionConfig = {
     secret: 'temporarysecret',
@@ -44,12 +43,24 @@ const sessionConfig = {
 }
 
 app.use(session(sessionConfig))
+app.use(flash())
+
+app.use((req, res, next) => {
+    console.log(res.locals.success)
+    res.locals.success = req.flash('sucess')
+    next()
+})
+
+app.use('/campgrounds', campgrounds)
+app.use('/campgrounds/:id/reviews', reviews)
+app.use(express.static(path.join(__dirname, 'public')))
+
+
 
 
 app.get('/', (req, res) => {
     res.send('YelpCamp')
 })
-
 
 
 app.all('*', (req, res, next) => {
