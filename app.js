@@ -4,6 +4,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
 const ExpressError = require('./utils/ExpressError');
+const session = require("express-session");
 
 const reviews = require('./routes/reviews')
 const campgrounds = require('./routes/campgrounds');
@@ -30,6 +31,19 @@ app.use(methodOverride('_method'))
 app.use('/campgrounds', campgrounds)
 app.use('/campgrounds/:id/reviews', reviews)
 app.use(express.static(path.join(__dirname, 'public')))
+
+const sessionConfig = {
+    secret: 'temporarysecret',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    }
+}
+
+app.use(session(sessionConfig))
 
 
 app.get('/', (req, res) => {
