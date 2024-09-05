@@ -46,9 +46,10 @@ app.use(session(sessionConfig))
 app.use(flash())
 
 app.use((req, res, next) => {
-    console.log(res.locals.success)
-    res.locals.success = req.flash('sucess')
-    next()
+    // console.log(res.locals.success)
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
+    next();
 })
 
 app.use('/campgrounds', campgrounds)
