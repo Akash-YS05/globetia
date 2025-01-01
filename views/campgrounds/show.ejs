@@ -4,6 +4,7 @@
 <div class="row">
     <div class="col-6">
 
+
         <div id="campgroundCarousel" class="carousel slide">
             <div class="carousel-inner">
                 <% campground.images.forEach((img, i) => { %>
@@ -52,6 +53,7 @@
           
     </div>
         <div class="col-6">
+            <div id='map' style='width: 100%; height: 300px;'></div>
             <% if (currentUser) { %>
             <h2>Leave A Review</h2>
             <form action="/campgrounds/<%= campground._id %>/reviews" class="mb-3 validated-form" novalidate method="POST">
@@ -100,11 +102,13 @@
 </div>
 
 
-
-
-
-
-
 <footer>
     <a href="/campgrounds">All Campgrounds</a>
 </footer>
+
+<script>
+    const maptilerApiKey = '<%- process.env.MAPTILER_API_KEY %>';
+    const campground = <%- JSON.stringify(campground) %>
+</script>
+
+<script src="/scripts/showMap.js"></script>
