@@ -30,15 +30,15 @@ header h3 {
     font-family: 'Lora', serif;
     font-weight: 600;
     font-size: 2.4rem;
-    letter-spacing: 0.5px;
-    /* font-style: italic; */
+    letter-spacing: -15px;
+    font-style: italic;
 }
 
 .nav-link {
     padding: 0.5rem 1rem;
     margin: 0 0.2rem;
     color: rgba(255, 255, 255, 0.8);
-    border-radius: 25px;
+    border-radius: 10px;
     transition: all 0.3s ease;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
@@ -85,9 +85,9 @@ main .lead {
 
 /* Button Styles */
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(10, 10, 10, 0.7);
     border: none;
-    border-radius: 30px;
+    border-radius: 10px;
     padding: 0.9rem 2.8rem;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 600;
@@ -99,6 +99,7 @@ main .lead {
 
 .btn-secondary:hover {
     background: white;
+    color: black;
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
