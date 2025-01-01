@@ -1,0 +1,175 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
+
+/* Base Styles */
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 100%),
+                url("https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.cover-container {
+    max-width: 70vw;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Header and Navigation */
+header h3 {
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    font-size: 2.4rem;
+    letter-spacing: 0.5px;
+    /* font-style: italic; */
+}
+
+.nav-link {
+    padding: 0.5rem 1rem;
+    margin: 0 0.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+.nav-link:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.nav-link.active {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Main Content */
+main {
+    padding: 4rem 0;
+}
+
+main h1 {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: 5rem;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+main .lead {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+    font-size: 1.35rem;
+    line-height: 1.8;
+    letter-spacing: 0.3px;
+    margin-bottom: 3rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Button Styles */
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 30px;
+    padding: 0.9rem 2.8rem;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    transition: all 0.4s ease;
+}
+
+.btn-secondary:hover {
+    background: white;
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+footer {
+    padding: 1rem 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+main h1, main .lead, main .btn {
+    animation: fadeIn 1.2s ease-out forwards;
+}
+
+/* Selection Style */
+::selection {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .cover-container {
+        max-width: 95vw;
+        margin: 1rem;
+    }
+    
+    header h3 {
+        font-size: 2rem;
+    }
+
+    main h1 {
+        font-size: 3.8rem;
+    }
+
+    .lead {
+        font-size: 1.2rem;
+        line-height: 1.7;
+    }
+    
+    .nav-link {
+        padding: 0.4rem 0.8rem;
+        margin: 0 0.1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    header h3 {
+        font-size: 1.8rem;
+    }
+
+    main h1 {
+        font-size: 3rem;
+    }
+
+    .lead {
+        font-size: 1.1rem;
+    }
+
+    .btn-secondary {
+        padding: 0.7rem 2rem;
+        font-size: 0.8rem;
+        letter-spacing: 1.5px;
+    }
+}

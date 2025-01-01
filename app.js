@@ -83,7 +83,7 @@ app.get('/fakeuser', async (req, res) =>{
 
 
 app.get("/", (req, res) => {
-  res.send("YelpCamp");
+  res.render("home");
 });
 
 app.all("*", (req, res, next) => {
