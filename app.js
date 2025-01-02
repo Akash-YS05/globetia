@@ -12,6 +12,7 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require('passport')
 const localStrategy = require('passport-local')    //these combined provide the tools that we would have to write otherwise to set up authentication
+const expressSanitize = require('express-mongo-sanitize');
 
 const reviewRoutes = require("./routes/reviews");
 const campgroundRoutes = require("./routes/campgrounds");
@@ -38,6 +39,9 @@ app.engine("ejs", ejsMate);
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(expressSanitize({
+  replaceWith: '_'
+}))
 
 
 const sessionConfig = {
@@ -63,7 +67,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
-  // console.log(req.session)
+  console.log(req.query)
   res.locals.currentUser = req.user;
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
