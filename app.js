@@ -13,6 +13,7 @@ const flash = require("connect-flash");
 const passport = require('passport')
 const localStrategy = require('passport-local')    //these combined provide the tools that we would have to write otherwise to set up authentication
 const expressSanitize = require('express-mongo-sanitize');
+const helmet = require('helmet');
 
 const reviewRoutes = require("./routes/reviews");
 const campgroundRoutes = require("./routes/campgrounds");
@@ -41,7 +42,48 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(expressSanitize({
   replaceWith: '_'
-}))
+}));
+app.use(helmet())
+const scriptSrcUrls = [
+  "https://stackpath.bootstrapcdn.com/",
+  "https://kit.fontawesome.com/",
+  "https://cdnjs.cloudflare.com/",
+  "https://cdn.jsdelivr.net",
+  "https://cdn.maptiler.com/",
+];
+const styleSrcUrls = [
+  "https://kit-free.fontawesome.com/",
+  "https://stackpath.bootstrapcdn.com/",
+  "https://fonts.googleapis.com/",
+  "https://use.fontawesome.com/",
+  "https://cdn.jsdelivr.net",
+  "https://cdn.maptiler.com/", 
+];
+const connectSrcUrls = [
+  "https://api.maptiler.com/",
+];
+const fontSrcUrls = [];
+app.use(
+  helmet.contentSecurityPolicy({
+      directives: {
+          defaultSrc: [],
+          connectSrc: ["'self'", ...connectSrcUrls],
+          scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
+          styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
+          workerSrc: ["'self'", "blob:"],
+          objectSrc: [],
+          imgSrc: [
+              "'self'",
+              "blob:",
+              "data:",
+              "https://res.cloudinary.com/ddkt00y0i/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT! 
+              "https://images.unsplash.com/",
+              "https://api.maptiler.com/",
+          ],
+          fontSrc: ["'self'", ...fontSrcUrls],
+      },
+  })
+);
 
 
 const sessionConfig = {
