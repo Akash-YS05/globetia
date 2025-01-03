@@ -2,7 +2,7 @@
   "engines": {
     "node": "20.15.1"
   },
-  "name": "wanderbase",
+  "name": "globetia",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
