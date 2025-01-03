@@ -1,6 +1,7 @@
 # Globetia
 
 **Globetia** is a platform that helps you find and upload campground, trekking, and safari sites around the world. Whether you're looking for a quiet camping spot, an adventurous trekking route, or an exciting safari experience, Globetia offers a community-driven way to explore and share the best outdoor destinations.
+[Visit Globetia](http://globetia.onrender.com)
 
 ## Features
 
