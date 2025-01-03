@@ -1,10 +1,14 @@
 {
-  "name": "yelpcamp",
+  "engines": {
+    "node": "20.15.1"
+  },
+  "name": "wanderbase",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +17,7 @@
     "@maptiler/client": "^1.8.1",
     "cloudinary": "^1.41.3",
     "connect-flash": "^0.1.1",
+    "connect-mongo": "^3.2.0",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "ejs-mate": "^4.0.0",

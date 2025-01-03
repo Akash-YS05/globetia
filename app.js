@@ -14,14 +14,16 @@ const passport = require('passport')
 const localStrategy = require('passport-local')    //these combined provide the tools that we would have to write otherwise to set up authentication
 const expressSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
+const MongoStore = require('connect-mongo')(session)
 
 const reviewRoutes = require("./routes/reviews");
 const campgroundRoutes = require("./routes/campgrounds");
 const userRoutes = require('./routes/users')
-const User = require('./models/user')
+const User = require('./models/user');
 
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp'
 mongoose
-  .connect("mongodb://localhost:27017/yelp-camp")
+  .connect(dbUrl)
   .then(() => {
     console.log("DB Connection open!");
   })
@@ -85,10 +87,23 @@ app.use(
   })
 );
 
+const secret = process.env.SECRET || 'temporarysecret'
+
+const store = new MongoStore({
+  url: dbUrl,
+  secret: secret,
+  touchAfter: 24*60*60
+})
+
+store.on("error", function(err) {
+  console.log("Session store error");
+  
+})
 
 const sessionConfig = {
+    store, 
     name: 'session',
-    secret: "temporarysecret",
+    secret: secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
