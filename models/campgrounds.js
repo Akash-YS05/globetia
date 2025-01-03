@@ -11,7 +11,7 @@ ImageSchema.virtual('thumbnail').get(function() {
     return this.url.replace('/upload', '/upload/w_200')
 })
 
-const opts = {toJSON: {virtuals: true}}
+const opts = {toJSON: {virtuals: true}};
 
 const CampgroundSchema = new Schema({
     title: String,
