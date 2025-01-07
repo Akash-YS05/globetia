@@ -1,24 +1,51 @@
-<nav class="navbar sticky-top navbar-expand-lg bg-body-secondary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Globetia</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-          <a class="nav-link" href="/campgrounds">Campgrounds</a>
-          <a class="nav-link" href="/campgrounds/new">New Campground</a>
-        </div>
-        <div class="navbar-nav">
-          <% if (!currentUser) { %>
-            <a href="/login" class="nav-link">Login</a>
-            <a href="/register" class="nav-link">Register</a>
-          <% } else { %>
-            <a href="/logout" class="nav-link">Logout</a>
-          <% } %>
-        </div>
-      </div>
-    </div>
-  </nav>
+<link rel="stylesheet" href="/styles/navbar.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
 
+ <nav class="navbar sticky-top bg-light-subtle border navbar-expand-lg shadow-lg" style="margin: 20px auto; border-radius: 12px; padding: 0.5rem 1rem;">
+  <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="/" style="transition: all 0.3s; color: #ffc107;">
+          <i class="fas fa-globe"></i> Globetia
+      </a>
+
+      <button 
+          class="navbar-toggler border-0" 
+          type="button" 
+          data-bs-toggle="collapse" 
+          data-bs-target="#navbarNavAltMarkup" 
+          aria-controls="navbarNavAltMarkup" 
+          aria-expanded="false" 
+          aria-label="Toggle navigation"
+      >
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav me-auto">
+              <a class="nav-link text-dark px-3" href="/" style="transition: all 0.3s;">
+                  Home
+              </a>
+              <a class="nav-link text-dark px-3" href="/campgrounds" style="transition: all 0.3s;">
+                  Campgrounds
+              </a>
+              <a class="nav-link text-dark px-3" href="/campgrounds/new" style="transition: all 0.3s;">
+                  <i class="fas fa-plus-circle"></i> New Campground
+              </a>
+          </div>
+
+          <div class="navbar-nav">
+              <% if (!currentUser) { %>
+                  <a href="/login" class="nav-link text-dark px-3" style="transition: all 0.3s;">
+                      <i class="fas fa-sign-in-alt"></i> Login
+                  </a>
+                  <a href="/register" class="nav-link text-dark px-3" style="transition: all 0.3s;">
+                      <i class="fas fa-user-plus"></i> Register
+                  </a>
+              <% } else { %>
+                  <a href="/logout" class="nav-link text-dark px-3" style="transition: all 0.3s;">
+                      <i class="fas fa-sign-out-alt"></i> Logout
+                  </a>
+              <% } %>
+          </div>
+      </div>
+  </div>
+</nav>
